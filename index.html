@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+    <title>Rock-Paper-Scissors Game</title>
+</head>
+<body>
+    <div id="header">
+        <h1>Rock-Paper-Scissors Game</h1>
+    </div>
+    <div id="box">
+    <div class="division" style="color: #3a1a1a;font-size: x-large;">
+        <div>
+            <span >No.of turns</span>
+            <input type="number" id="game-number">
+        </div>
+        <div>
+            <button id="play-game">Play</button>
+            <button id="reset-game">Reset</button>
+        </div>
+        
+        <div id="Rock-Paper-Scissors">
+            <p class="move">choose your move</p>
+            <button id="Rock">Rock</button>
+            <button id="Paper">Paper</button>
+            <button id="Scissors">Scissors</button>
+        </div>
+        <div >
+            <span><h2>Computer chose</h2></span>
+            <p id="comp-choose"></p>
+        </div>
+    </div>
+    <div class="division score" >
+        <div id="Player">
+            <h2>User Points</h2>
+            <p id="Userpoints">0</p>
+        </div>
+        <div id="Computer">
+            <h2>Computer Points</h2>
+            <p id="Computerpoints">0</p>
+        </div>
+        <div id="op">
+            <h2>N0.of turns left</h2>
+            <p id="round-left">0</p>
+        </div>
+        <div>
+            <span><h2>Result</h2></span>
+            <p id="round-result"></p>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+        'use strict';
+        
+        let compChose=0
+        let NoOfTurns=0
+        let btn=document.getElementById("play-game")
+        btn.addEventListener('click',()=>{
+            
+            
+            NoOfTurns=document.getElementById("game-number").value
+            document.getElementById("round-left").textContent=NoOfTurns;
+            //
+            
+        })
+       
+        let rock=document.getElementById("Rock")
+        let paper=document.getElementById("Paper")
+        let scissors=document.getElementById("Scissors")
+        
+        let compOptions=['rock','paper','scissors'];
+        let Userpoints=document.getElementById("Userpoints").textContent
+        let computerpoints=document.getElementById("Computerpoints").textContent
+        let result=document.getElementById("round-result")
+        function compchoise(compChose){
+            if(compChose===1) return compOptions[0]
+            if(compChose===2)return compOptions[1]
+            if(compChose===3)return compOptions[2]
+        }
+        function displayNoOfTurns(NoOfTurns)
+        {
+            if(NoOfTurns>0)
+            document.getElementById("round-left").textContent=NoOfTurns
+            else if(NoOfTurns==0){
+                document.getElementById("round-left").textContent=NoOfTurns
+                DisplayFinalResult();
+            }
+        }
+        function DisplayFinalResult()
+        {
+            result.textContent="Game Over:"
+            if(computerpoints>Userpoints)
+            return result.textContent+="You Lost :("
+            else if(computerpoints<Userpoints)
+            return result.textContent+="You Won!!!!";
+            else
+            return result.textContent+="Tie..."
+
+        }
+        rock.addEventListener('click',()=>{
+            const choiseTimeout= setTimeout(()=>{
+            compChose= Math.trunc(Math.random()*3)+1;
+            document.getElementById("comp-choose").textContent=compchoise(compChose)
+        },1000)
+        const timeout= setTimeout(()=>{
+            if(compchoise(compChose)==='rock')
+                result.textContent="Tie..."
+            else if(compchoise(compChose)==='scissors'){
+                result.textContent="You Won!!!!";
+                Userpoints++
+                console.log(Userpoints);
+                document.getElementById("Userpoints").textContent=Userpoints
+            }
+            else{
+                result.textContent="You Lost :("
+                computerpoints++
+                document.getElementById("Computerpoints").textContent=computerpoints
+            }
+            NoOfTurns--;
+            displayNoOfTurns(NoOfTurns)
+        },2500)
+        })
+        paper.addEventListener('click',()=>{
+            const choiseTimeout= setTimeout(()=>{
+            compChose= Math.trunc(Math.random()*3)+1;
+            document.getElementById("comp-choose").textContent=compchoise(compChose)
+        },1000)
+            const Timeout= setTimeout(()=>{
+            if(compchoise(compChose)==='rock'){
+                result.textContent="You Won!!!!"
+                Userpoints++
+                document.getElementById("Userpoints").textContent=Userpoints
+            }
+            else if(compchoise(compChose)==='scissors'){
+                result.textContent="You Lost :(";
+                computerpoints++
+                document.getElementById("Computerpoints").textContent=computerpoints
+            }
+            else{
+                result.textContent="Tie..."
+                
+            }
+            NoOfTurns--;
+            displayNoOfTurns(NoOfTurns)
+        },2500)
+        })
+        scissors.addEventListener('click',()=>{
+            const choiseTimeout= setTimeout(()=>{
+            compChose= Math.trunc(Math.random()*3)+1;
+            document.getElementById("comp-choose").textContent=compchoise(compChose)
+        },1000)
+            const Timeout= setTimeout(()=>{
+            if(compchoise(compChose)==='rock'){
+                result.textContent="You Lost :("
+                computerpoints++
+                document.getElementById("Computerpoints").textContent=computerpoints
+            }
+            else if(compchoise(compChose)==='scissors'){
+                result.textContent="Tie...";
+            }
+            else{
+                result.textContent="You Won!!!!"
+                Userpoints++
+                document.getElementById("Userpoints").textContent=Userpoints
+                
+            }
+            NoOfTurns--;
+            displayNoOfTurns(NoOfTurns)
+        },2500)
+
+        })
+      
+    let reset=document.getElementById("reset-game")
+    reset.addEventListener('click',()=>{
+        document.getElementById("round-left").textContent=0
+        document.getElementById("Computerpoints").textContent=0
+        document.getElementById("Userpoints").textContent=0
+        document.getElementById("game-number").value=0
+        document.getElementById("comp-choose").textContent=""
+        result.textContent=""
+
+    })
+
+
+    </script>
+</body>
+</html>

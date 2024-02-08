@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#header{
+    background-color: #3a1a1a;
+    /* height: 100px; */
+}
+h1{
+    text-align: center;
+    background-color: #3a1a1a;
+    padding-top: 20px;
+    height: 100px;
+     box-sizing: border-box;
+     font-size:50px;
+     color: rgb(236, 220, 200);
+     position: sticky;
+     top:0
+}
+#box{
+    border: 1rem solid rgb(150, 171, 150,0.5);
+    
+    padding-top: -50px;
+    text-align: center;
+    background-color: rgb(216, 223, 188);
+ }
+ .division {
+    display: inline-block;
+    
+    padding: 1rem 1rem;
+    margin:70px;
+ }
+#Rock-Paper-Scissors{
+    padding: 20px;
+}
+#Rock-Paper-Scissors>button{margin-right: 20px;
+margin-top: 20px;
+}
+
+#play-game{
+    margin-top: 30px;
+    margin-left: 100px;
+    margin-bottom: 50px;
+    margin-right: 5px;
+}
+
+span{padding-left: 20px;}
+
+button{
+    font-size: large;
+    padding: 2px 5px;
+    border-radius: 5px;
+    background-color:rgba(23, 24, 23, 0.5) ;
+    color: aliceblue;
+}
+.score>div{
+    color: #3a1a1a;
+    font-size: larger;
+    margin-bottom: 10px;
+}
